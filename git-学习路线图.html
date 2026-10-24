@@ -1,0 +1,93 @@
+<html style="margin:0;padding:0;">
+<title>Git小白上手路线图（VSCode实操版）</title>
+<div style="width:100%;box-sizing:border-box;font-family:'Microsoft YaHei',system-ui,sans-serif;background:#f6f8fa;padding:20px 16px;">
+  <div style="font-size:20px;font-weight:700;color:#24292f;margin-bottom:4px;">你的 Git 上手路线图（按顺序执行，不用跳）</div>
+  <div style="font-size:13px;color:#57606a;margin-bottom:16px;">当前进度：阶段一 ✅ 阶段二 ✅ 阶段三 ⏳ 正在推送 GitHub</div>
+
+  <svg viewBox="0 0 960 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin-bottom:16px;">
+    <defs>
+      <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 z" fill="#57606a"/></marker>
+    </defs>
+    <!-- 5个阶段节点 -->
+    <g font-size="13" font-weight="700" text-anchor="middle">
+      <circle cx="80" cy="80" r="34" fill="#1a7f37"/><text x="80" y="76" fill="#fff">阶段1</text><text x="80" y="94" fill="#fff" font-size="11">概念</text>
+      <circle cx="280" cy="80" r="34" fill="#1a7f37"/><text x="280" y="76" fill="#fff">阶段2</text><text x="280" y="94" fill="#fff" font-size="11">本地提交</text>
+      <circle cx="480" cy="80" r="34" fill="#bf8700"/><text x="480" y="76" fill="#fff">阶段3</text><text x="480" y="94" fill="#fff" font-size="11">推上GitHub</text>
+      <circle cx="680" cy="80" r="34" fill="#fff" stroke="#d0d7de" stroke-width="2"/><text x="680" y="76" fill="#57606a">阶段4</text><text x="680" y="94" fill="#57606a" font-size="11">日常循环</text>
+      <circle cx="880" cy="80" r="34" fill="#fff" stroke="#d0d7de" stroke-width="2"/><text x="880" y="76" fill="#57606a">阶段5</text><text x="880" y="94" fill="#57606a" font-size="11">分支回退</text>
+    </g>
+    <line x1="114" y1="80" x2="246" y2="80" stroke="#57606a" stroke-width="2" marker-end="url(#ar)"/>
+    <line x1="314" y1="80" x2="446" y2="80" stroke="#57606a" stroke-width="2" marker-end="url(#ar)"/>
+    <line x1="514" y1="80" x2="646" y2="80" stroke="#57606a" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ar)"/>
+    <line x1="714" y1="80" x2="846" y2="80" stroke="#57606a" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ar)"/>
+    <text x="480" y="150" text-anchor="middle" font-size="12" fill="#57606a">绿色=已完成　黄色=进行中　灰色=以后学（遇到问题再回来）</text>
+  </svg>
+
+  <!-- 阶段详情卡片 -->
+  <div style="display:flex;flex-wrap:wrap;gap:10px;">
+
+    <div style="flex:1 1 280px;background:#fff;border:1px solid #d0d7de;border-radius:10px;padding:12px 14px;border-left:4px solid #1a7f37;">
+      <div style="font-weight:700;color:#24292f;font-size:14px;">✅ 阶段1：建立直觉</div>
+      <div style="font-size:12px;color:#57606a;margin-top:6px;line-height:1.7;">
+        Git = 给代码拍快照的相机。<br>
+        改代码 → 选入暂存 → 拍快照(commit) → 可回退。<br>
+        你的身份已配好：salute / 1121902668@qq.com
+      </div>
+    </div>
+
+    <div style="flex:1 1 280px;background:#fff;border:1px solid #d0d7de;border-radius:10px;padding:12px 14px;border-left:4px solid #1a7f37;">
+      <div style="font-weight:700;color:#24292f;font-size:14px;">✅ 阶段2：本地三连</div>
+      <div style="font-size:12px;color:#57606a;margin-top:6px;line-height:1.7;">
+        <b>git init</b> = 建仓库（只做一次）<br>
+        <b>git add .</b> = 所有改动放入暂存<br>
+        <b>git commit -m "备注"</b> = 拍快照<br>
+        <b>git status</b> = 查看现状<br>
+        已完成：8个文件入库，快照号 6a284df
+      </div>
+    </div>
+
+    <div style="flex:1 1 280px;background:#fff;border:1px solid #d0d7de;border-radius:10px;padding:12px 14px;border-left:4px solid #bf8700;">
+      <div style="font-weight:700;color:#24292f;font-size:14px;">⏳ 阶段3：推上GitHub</div>
+      <div style="font-size:12px;color:#57606a;margin-top:6px;line-height:1.7;">
+        <b>git remote add origin 地址</b> = 绑定远程仓库<br>
+        <b>git push -u origin main</b> = 第一次上传<br>
+        之后每次只敲 <b>git push</b> 即可<br>
+        绑定地址：github.com/salute666666/GIT
+      </div>
+    </div>
+
+    <div style="flex:1 1 280px;background:#fff;border:1px solid #d0d7de;border-radius:10px;padding:12px 14px;border-left:4px solid #8b949e;">
+      <div style="font-weight:700;color:#24292f;font-size:14px;">📌 阶段4：以后每天重复这套</div>
+      <div style="font-size:12px;color:#57606a;margin-top:6px;line-height:1.7;">
+        ① 改代码　② 左侧源代码管理(Ctrl+Shift+G)<br>
+        ③ 点文件名旁 + 号(=add)<br>
+        ④ 顶部框写一句备注 → 点 ✓提交<br>
+        ⑤ 点"..." → 推送(=push)<br>
+        <b>就这5步，循环一辈子。</b>
+      </div>
+    </div>
+
+    <div style="flex:1 1 280px;background:#fff;border:1px solid #d0d7de;border-radius:10px;padding:12px 14px;border-left:4px solid #8b949e;">
+      <div style="font-weight:700;color:#24292f;font-size:14px;">📌 阶段5：救急命令（出问题再查）</div>
+      <div style="font-size:12px;color:#57606a;margin-top:6px;line-height:1.7;">
+        <b>git log</b> = 看历史快照列表<br>
+        <b>git clone 地址</b> = 把别人仓库下载到本地<br>
+        <b>git pull</b> = 把GitHub新代码拉到本地<br>
+        <b>git checkout -- 文件名</b> = 丢弃某文件未保存的改动<br>
+        <b>git reset --hard 快照号</b> = 整个项目回到历史版本
+      </div>
+    </div>
+
+    <div style="flex:1 1 280px;background:#fffbe6;border:1px solid #d9b800;border-radius:10px;padding:12px 14px;border-left:4px solid #d9b800;">
+      <div style="font-weight:700;color:#9a6700;font-size:14px;">⚠️ 你现在必须先做一件事</div>
+      <div style="font-size:12px;color:#57606a;margin-top:6px;line-height:1.7;">
+        <b>VSCode 打开错了文件夹！</b><br>
+        点菜单：文件 → 打开文件夹 → 选<br>
+        <code style="background:#f6f8fa;padding:1px 4px;border-radius:3px;">E:\c语言\project3\project3</code><br>
+        <b>不是 Debug！</b> 打开根目录后，那37个"更改"立刻变成正常的源代码管理状态。
+      </div>
+    </div>
+
+  </div>
+</div>
+</html>

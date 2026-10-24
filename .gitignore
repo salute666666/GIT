@@ -1,0 +1,18 @@
+# ===== 构建产物（编译生成的中间文件，不用上传）=====
+Debug/
+Release/
+x64/
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.idb
+*.log
+*.tlog
+*.user
+
+# ===== Visual Studio 临时目录 =====
+.vs/
+
+# ===== VSCode 个人配置（里面写了本机绝对路径，不分享）=====
+.vscode/

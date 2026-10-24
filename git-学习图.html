@@ -1,0 +1,87 @@
+<html style="margin:0;padding:0;">
+<title>Git核心机制与常用命令</title>
+<div style="width:100%;box-sizing:border-box;font-family:'Microsoft YaHei',system-ui,sans-serif;background:#f6f8fa;padding:20px 16px;">
+  <div style="font-size:20px;font-weight:700;color:#24292f;margin-bottom:4px;">Git 核心机制：代码快照的三区流转</div>
+  <div style="font-size:13px;color:#57606a;margin-bottom:16px;">工作区 → 暂存区 → 本地仓库 → 远程仓库，每一次 commit 都是一张可回退的快照</div>
+
+  <svg viewBox="0 0 940 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L8,3 L0,6 z" fill="#57606a"/>
+      </marker>
+      <marker id="arrowBack" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L8,3 L0,6 z" fill="#1a7f37"/>
+      </marker>
+    </defs>
+
+    <!-- 四个区域 -->
+    <rect x="20" y="70" width="180" height="120" rx="10" fill="#fff" stroke="#d0d7de" stroke-width="1.5"/>
+    <rect x="260" y="70" width="180" height="120" rx="10" fill="#fff" stroke="#d0d7de" stroke-width="1.5"/>
+    <rect x="500" y="70" width="180" height="120" rx="10" fill="#fff" stroke="#d0d7de" stroke-width="1.5"/>
+    <rect x="740" y="70" width="180" height="120" rx="10" fill="#fff" stroke="#d0d7de" stroke-width="1.5"/>
+
+    <!-- 区域标签 -->
+    <text x="110" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#24292f">工作区</text>
+    <text x="110" y="122" text-anchor="middle" font-size="12" fill="#57606a">Working Directory</text>
+    <text x="110" y="150" text-anchor="middle" font-size="12" fill="#57606a">你写代码的地方</text>
+    <text x="110" y="170" text-anchor="middle" font-size="12" fill="#57606a">改完的文件都在这里</text>
+
+    <text x="350" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#24292f">暂存区</text>
+    <text x="350" y="122" text-anchor="middle" font-size="12" fill="#57606a">Staging Area</text>
+    <text x="350" y="150" text-anchor="middle" font-size="12" fill="#57606a">待提交清单</text>
+    <text x="350" y="170" text-anchor="middle" font-size="12" fill="#57606a">选好要打包的文件</text>
+
+    <text x="590" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#24292f">本地仓库</text>
+    <text x="590" y="122" text-anchor="middle" font-size="12" fill="#57606a">.git 目录</text>
+    <text x="590" y="150" text-anchor="middle" font-size="12" fill="#57606a">快照存档，可随时回退</text>
+    <text x="590" y="170" text-anchor="middle" font-size="12" fill="#57606a">所有历史版本在这里</text>
+
+    <text x="830" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#24292f">远程仓库</text>
+    <text x="830" y="122" text-anchor="middle" font-size="12" fill="#57606a">GitHub / Gitee</text>
+    <text x="830" y="150" text-anchor="middle" font-size="12" fill="#57606a">云端备份与协作</text>
+    <text x="830" y="170" text-anchor="middle" font-size="12" fill="#57606a">团队共享的版本</text>
+
+    <!-- 箭头 工作区→暂存区 -->
+    <line x1="200" y1="130" x2="256" y2="130" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="228" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#1a7f37">git add</text>
+    <text x="228" y="150" text-anchor="middle" font-size="11" fill="#57606a">把改动选入暂存</text>
+
+    <!-- 箭头 暂存区→本地仓库 -->
+    <line x1="440" y1="130" x2="496" y2="130" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="468" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#1a7f37">git commit</text>
+    <text x="468" y="150" text-anchor="middle" font-size="11" fill="#57606a">打包成一张快照</text>
+
+    <!-- 箭头 本地→远程 -->
+    <line x1="680" y1="130" x2="736" y2="130" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="708" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#1a7f37">git push</text>
+    <text x="708" y="150" text-anchor="middle" font-size="11" fill="#57606a">上传到云端</text>
+
+    <!-- 箭头 远程→本地 -->
+    <line x1="830" y1="200" x2="590" y2="225" stroke="#1a7f37" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowBack)"/>
+    <text x="740" y="235" text-anchor="middle" font-size="13" font-weight="700" fill="#1a7f37">git pull</text>
+    <text x="740" y="252" text-anchor="middle" font-size="11" fill="#57606a">把云端更新拉下来</text>
+
+    <!-- 底部：回退 -->
+    <line x1="590" y1="210" x2="350" y2="225" stroke="#d1242f" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+    <text x="470" y="235" text-anchor="middle" font-size="13" font-weight="700" fill="#d1242f">git reset / checkout</text>
+    <text x="470" y="252" text-anchor="middle" font-size="11" fill="#57606a">回退到历史快照</text>
+  </svg>
+
+  <div style="background:#fff;border:1px solid #d0d7de;border-radius:10px;padding:14px 16px;margin-top:14px;">
+    <div style="font-size:15px;font-weight:700;color:#24292f;margin-bottom:10px;">最常用命令速查（按使用频率）</div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;color:#24292f;">
+      <tr style="background:#f6f8fa;">
+        <td style="padding:7px 8px;font-weight:700;border:1px solid #d0d7de;width:170px;">命令</td>
+        <td style="padding:7px 8px;font-weight:700;border:1px solid #d0d7de;">作用（一句话）</td>
+      </tr>
+      <tr><td style="padding:7px 8px;border:1px solid #d0d7de;font-family:Consolas,monospace;">git init</td><td style="padding:7px 8px;border:1px solid #d0d7de;">把当前文件夹变成 Git 仓库（只需一次）</td></tr>
+      <tr><td style="padding:7px 8px;border:1px solid #d0d7de;font-family:Consolas,monospace;">git status</td><td style="padding:7px 8px;border:1px solid #d0d7de;">看当前哪些文件改了、哪些待提交</td></tr>
+      <tr><td style="padding:7px 8px;border:1px solid #d0d7de;font-family:Consolas,monospace;">git add 文件名</td><td style="padding:7px 8px;border:1px solid #d0d7de;">把文件改动放进暂存区（git add . 全部）</td></tr>
+      <tr><td style="padding:7px 8px;border:1px solid #d0d7de;font-family:Consolas,monospace;">git commit -m "说明"</td><td style="padding:7px 8px;border:1px solid #d0d7de;">把暂存内容打包成一张快照（带备注）</td></tr>
+      <tr><td style="padding:7px 8px;border:1px solid #d0d7de;font-family:Consolas,monospace;">git log</td><td style="padding:7px 8px;border:1px solid #d0d7de;">查看提交历史</td></tr>
+      <tr><td style="padding:7px 8px;border:1px solid #d0d7de;font-family:Consolas,monospace;">git branch 分支名</td><td style="padding:7px 8px;border:1px solid #d0d7de;">创建分支（平行开发互不影响）</td></tr>
+      <tr><td style="padding:7px 8px;border:1px solid #d0d7de;font-family:Consolas,monospace;">git push / git pull</td><td style="padding:7px 8px;border:1px solid #d0d7de;">上传到远程仓库 / 从远程拉取更新</td></tr>
+    </table>
+  </div>
+</div>
+</html>
