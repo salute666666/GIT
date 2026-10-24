@@ -14,7 +14,7 @@ int main()
 	cout<<p[1]<<endl;
 	cout<<*c<<endl;
 	cout<<*(c+1)<<endl;
-	cout<<*(c)<<endl;
+	
    
 	system("pause");
 	return 0;

@@ -1,0 +1,164 @@
+<html style="margin:0;padding:0;">
+<title>VSCode Git 操作完整手册（小白版）</title>
+<div style="max-width:900px;margin:0 auto;padding:24px 20px;font-family:'Microsoft YaHei',system-ui,sans-serif;background:#ffffff;color:#24292f;line-height:1.8;">
+
+  <div style="border-bottom:3px solid #1a7f37;padding-bottom:16px;margin-bottom:24px;">
+    <div style="font-size:26px;font-weight:800;color:#24292f;">VSCode Git 操作完整手册</div>
+    <div style="font-size:14px;color:#57606a;margin-top:6px;">专为小白写 · 全部在 VSCode 鼠标点完 · 对应你的项目 project3 · 远程仓库 github.com/salute666666/GIT</div>
+  </div>
+
+  <!-- ============ 第0课 ============ -->
+  <div style="background:#ddf4e4;border-radius:10px;padding:14px 18px;margin-bottom:24px;">
+    <div style="font-size:17px;font-weight:700;color:#1a7f37;">✅ 第0课：你已经完成的（不用再做）</div>
+    <div style="font-size:14px;margin-top:8px;">
+      ① 项目已变成 Git 仓库（有了 .git 隐藏文件夹）<br>
+      ② 已写好 .gitignore（自动忽略 Debug、.exe、.obj 等编译垃圾）<br>
+      ③ 已绑定 GitHub 远程仓库（地址：origin = github.com/salute666666/GIT）<br>
+      ④ 已配置代理（连 GitHub 不再超时）<br>
+      <b>以后只需要学"日常循环"和"救急操作"两部分。</b>
+    </div>
+  </div>
+
+  <!-- ============ 认识面板 ============ -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:20px;font-weight:700;border-left:4px solid #1a7f37;padding-left:10px;margin-bottom:14px;">一、认识 VSCode 的 Git 面板</div>
+    <div style="font-size:14px;">
+      点 VSCode 最左边栏那个<b>分支圆圈图标</b>（或按 <code style="background:#f6f8fa;padding:2px 6px;border-radius:3px;">Ctrl+Shift+G</code>），打开"源代码管理"面板。它由上到下分三块：
+    </div>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:10px;">
+      <tr style="background:#f6f8fa;"><th style="border:1px solid #d0d7de;padding:8px;text-align:left;">区域</th><th style="border:1px solid #d0d7de;padding:8px;text-align:left;">作用</th></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:8px;">消息输入框（顶部）</td><td style="border:1px solid #d0d7de;padding:8px;">写"这次改了什么"的备注，一句话</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:8px;">✓ 提交按钮</td><td style="border:1px solid #d0d7de;padding:8px;">点它 = git commit（拍快照）</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:8px;">"更改"列表</td><td style="border:1px solid #d0d7de;padding:8px;">列出你改过/新建的文件。文件右边：<b>+号</b>=暂存，<b>-号</b>=取消暂存，<b>↶</b>=丢弃改动</td></tr>
+    </table>
+  </div>
+
+  <!-- ============ 日常循环 ============ -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:20px;font-weight:700;border-left:4px solid #0969da;padding-left:10px;margin-bottom:14px;">二、日常循环（每天重复这5步，记住就够用）</div>
+    <div style="font-size:14px;background:#ddf4ff;border-radius:10px;padding:16px 18px;">
+      <b>场景：你刚改完 1.cpp，想保存这次进度并上传 GitHub。</b><br><br>
+      <b>第1步：</b>按 <code>Ctrl+Shift+G</code> 打开源代码管理面板，你会看到 <code>1.cpp</code> 出现在"更改"里（字母 M = Modified 改过了）。<br><br>
+      <b>第2步：</b>把鼠标移到 <code>1.cpp</code> 那一行，点右边出现的 <b>+ 号</b>。<br>
+      → 文件会从"更改"跳到"暂存的更改"分组里。这步 = <code>git add</code>（选好要打包的文件）。<br>
+      → 想全部暂存：点"更改"三个字右边的 <b>+</b> 号，一次性全选。<br><br>
+      <b>第3步：</b>顶部消息框里写一句备注，例如：<code style="background:#fff;padding:2px 6px;border-radius:3px;">给main函数加了数组遍历</code><br>
+      → 写人话，以后回看能看懂改了啥。<br><br>
+      <b>第4步：</b>点蓝色 <b>✓ 提交</b> 按钮（或按 <code>Ctrl+Enter</code>）。<br>
+      → 这步 = <code>git commit</code>（拍快照存档）。左下角会闪过一个数字，表示提交成功。<br><br>
+      <b>第5步：</b>点面板右上角 <b>"..."</b> → 选 <b>"推送"</b>（Push）。<br>
+      → 这步 = <code>git push</code>（把快照上传 GitHub）。<br>
+      → 第一次可能弹浏览器让你登录 GitHub，登录一次以后不再问。<br><br>
+      <b>🎉 完成！</b> 打开 github.com/salute666666/GIT 就能看到新代码。
+    </div>
+  </div>
+
+  <!-- ============ 查看历史 ============ -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:20px;font-weight:700;border-left:4px solid #bf8700;padding-left:10px;margin-bottom:14px;">三、查看历史版本（我之前到底改了啥）</div>
+    <div style="font-size:14px;">
+      <b>方法1（图形界面）：</b>源代码管理面板右上角 <b>"..."</b> → <b>视图</b> → <b>历史记录</b>。会列出所有提交，点任意一条能看到那个版本改了哪些行。<br><br>
+      <b>方法2（命令面板）：</b>按 <code>Ctrl+Shift+P</code> → 输入 <code>Git: View History</code>。<br><br>
+      <b>方法3（终端）：</b>底部终端输入 <code>git log --oneline</code>，会列出一串快照号和备注。
+    </div>
+  </div>
+
+  <!-- ============ 回退救急 ============ -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:20px;font-weight:700;border-left:4px solid #cf222e;padding-left:10px;margin-bottom:14px;">四、救急操作（改坏了怎么办）</div>
+
+    <div style="background:#ffebe9;border-radius:10px;padding:14px 18px;margin-bottom:12px;">
+      <div style="font-weight:700;color:#cf222e;">情况A：代码改乱了，还没提交，想丢弃这次改动</div>
+      <div style="font-size:14px;margin-top:6px;">
+        源代码管理面板 → 鼠标移到那个文件上 → 点右边的 <b>↶ 回退箭头（放弃更改/Discard Changes）</b> → 确认。<br>
+        代码立刻恢复到上次提交时的样子。<b>注意：未提交的改动会永久丢失。</b>
+      </div>
+    </div>
+
+    <div style="background:#ffebe9;border-radius:10px;padding:14px 18px;margin-bottom:12px;">
+      <div style="font-weight:700;color:#cf222e;">情况B：已经提交了，但发现这次提交是错的，想撤回这次提交</div>
+      <div style="font-size:14px;margin-top:6px;">
+        面板"..." → <b>提交</b> → <b>撤销提交（Undo Commit）</b>。代码改动会退回到"暂存"状态，让你重新整理再提交。
+      </div>
+    </div>
+
+    <div style="background:#ffebe9;border-radius:10px;padding:14px 18px;">
+      <div style="font-weight:700;color:#cf222e;">情况C：想把整个项目退回到某个历史版本</div>
+      <div style="font-size:14px;margin-top:6px;">
+        先在历史记录里找到目标版本号（如 <code>513ebf7</code>），终端执行：<br>
+        <code style="background:#f6f8fa;padding:4px 8px;border-radius:4px;display:inline-block;margin-top:6px;">git reset --hard 513ebf7</code><br>
+        <b>警告：这会丢弃该版本之后的所有改动，慎用。</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 分支 ============ -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:20px;font-weight:700;border-left:4px solid #8250df;padding-left:10px;margin-bottom:14px;">五、分支（平行试验新功能，不影响主代码）</div>
+    <div style="font-size:14px;">
+      <b>理解：</b>main 是主线稳定版。分支 = 从主线切出去一条平行空间，你在里面随便折腾，搞砸了删掉就行，main 永远干净。<br><br>
+      <b>在 VSCode 里操作：</b><br>
+      ① 点 VSCode <b>左下角那个蓝色圆圈（显示 main 的地方）</b>。<br>
+      ② 弹出菜单选 <b>"创建分支的分支"</b>。<br>
+      ③ 输入分支名，例如 <code>test-pointer</code>，回车。<br>
+      ④ 之后你所有提交都在这个分支上，main 不变。<br>
+      ⑤ 想切回主线：再点左下角，选 <code>main</code>。<br>
+      ⑥ 试验成功想合并回主线：先切到 main → 面板"..." → <b>分支</b> → <b>合并分支</b> → 选 <code>test-pointer</code>。
+    </div>
+  </div>
+
+  <!-- ============ 拉取 ============ -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:20px;font-weight:700;border-left:4px solid #1a7f37;padding-left:10px;margin-bottom:14px;">六、拉取远程最新代码（pull）</div>
+    <div style="font-size:14px;">
+      如果你在另一台电脑或网页上改了 GitHub 上的代码，本地要下载下来：<br>
+      面板"..." → <b>拉取（Pull）</b>。<br><br>
+      <b>如果推送时报错：</b>提示"本地和远程有分叉"，先做一次"拉取"，等它自动合并，再点"推送"。<br>
+      <b>你现在的状态就是这种：</b>本地和远程差了各1个提交，下次先拉再推就行。
+    </div>
+  </div>
+
+  <!-- ============ 克隆 ============ -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:20px;font-weight:700;border-left:4px solid #0969da;padding-left:10px;margin-bottom:14px;">七、克隆别人的仓库到本地（clone）</div>
+    <div style="font-size:14px;">
+      想把 GitHub 上某个项目下载到自己电脑：<br>
+      ① 按 <code>Ctrl+Shift+P</code> → 输入 <code>Git: Clone</code><br>
+      ② 粘贴仓库地址（如 <code>https://github.com/salute666666/GIT.git</code>）<br>
+      ③ 选一个本地文件夹存放。
+    </div>
+  </div>
+
+  <!-- ============ 常见报错 ============ -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:20px;font-weight:700;border-left:4px solid #cf222e;padding-left:10px;margin-bottom:14px;">八、常见报错速查</div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr style="background:#f6f8fa;"><th style="border:1px solid #d0d7de;padding:8px;text-align:left;">报错</th><th style="border:1px solid #d0d7de;padding:8px;text-align:left;">原因 & 解决</th></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:8px;">Failed to connect to github.com port 443</td><td style="border:1px solid #d0d7de;padding:8px;">网络不通。检查代理是否开着。已帮你配好 7890 端口代理。</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:8px;">Author identity unknown</td><td style="border:1px solid #d0d7de;padding:8px;">没配用户信息。已配好 salute / 1121902668@qq.com。</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:8px;">Updates were rejected (分叉)</td><td style="border:1px solid #d0d7de;padding:8px;">先"拉取"再"推送"。</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:8px;"> Lotus 一堆 .obj/.exe 出现在更改里</td><td style="border:1px solid #d0d7de;padding:8px;">.gitignore 没生效，说明你打开的文件夹错了（开成了 Debug 子目录）。重新打开 E:\c语言\project3\project3 根目录。</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:8px;">推送要求登录但弹窗失败</td><td style="border:1px solid #d0d7de;padding:8px;">在终端跑一次 git push，会自动弹浏览器，点 Authorize。</td></tr>
+    </table>
+  </div>
+
+  <!-- ============ 速查 ============ -->
+  <div style="background:#f6f8fa;border-radius:10px;padding:16px 18px;margin-bottom:20px;">
+    <div style="font-size:17px;font-weight:700;margin-bottom:10px;">📌 一张表记住所有操作</div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr style="background:#fff;"><th style="border:1px solid #d0d7de;padding:6px;">你想干啥</th><th style="border:1px solid #d0d7de;padding:6px;">VSCode 点哪里</th></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:6px;">保存本次改动</td><td style="border:1px solid #d0d7de;padding:6px;">+号暂存 → 写备注 → ✓提交</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:6px;">上传到 GitHub</td><td style="border:1px solid #d0d7de;padding:6px;">... → 推送</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:6px;">下载 GitHub 新代码</td><td style="border:1px solid #d0d7de;padding:6px;">... → 拉取</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:6px;">看历史版本</td><td style="border:1px solid #d0d7de;padding:6px;">... → 视图 → 历史记录</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:6px;">丢弃未提交的改动</td><td style="border:1px solid #d0d7de;padding:6px;">文件旁 ↶ 放弃更改</td></tr>
+      <tr><td style="border:1px solid #d0d7de;padding:6px;">新建试验分支</td><td style="border:1px solid #d0d7de;padding:6px;">左下角 main → 创建分支</td></tr>
+    </table>
+  </div>
+
+  <div style="text-align:center;color:#8b949e;font-size:12px;border-top:1px solid #d0d7de;padding-top:14px;">
+    这份手册和你的代码一起存在 GitHub 仓库里，换电脑 clone 下来就能看。
+  </div>
+
+</div>
+</html>
