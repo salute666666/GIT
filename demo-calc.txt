@@ -2,4 +2,5 @@
 功能A：加法 a+b（来自 feature/calc）
 功能B：减法a-b（来自main）
 功能C:不加也不减（来自main）
-功能D:用分支改 （来自main）
+功能D:用分支改了 （来自main）
+功能E:分支加（new branch）
