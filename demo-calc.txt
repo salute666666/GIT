@@ -7,3 +7,4 @@
 功能F:好好（来自新main）
 功能D:用分支改了 （来自main）
 功能E:分支加（new branch）
+功能FG：（a'b'c）abc
