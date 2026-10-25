@@ -8,3 +8,4 @@
 功能D:用分支改了 （来自main）
 功能E:分支加（new branch）
 功能FG：（a'b'c）abc
+功能G:这条提交我马上要后悔了
